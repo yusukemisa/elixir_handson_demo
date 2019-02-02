@@ -2,7 +2,9 @@ defmodule DemoWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", DemoWeb.RoomChannel
+  # phoenixのwebsocket通信の定義マクロ（defmacro channel(topic_pattern, module, opts \\ []) do...）
+  # channel <トピックのパターン>, <チャネルを処理するモジュール>
+  channel "chat:lobby", DemoWeb.ChatChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

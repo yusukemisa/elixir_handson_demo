@@ -1,8 +1,15 @@
 defmodule DemoWeb.HelloController do
   use DemoWeb, :controller # コントローラー関連の機能を使うための指定
 
+  @doc """
+  conn : コネクションの構造体、通信接続情報がここの中に含まれる
+  params : 画面表示時のURLパラメータなどの情報が含まれる
+  """
   def hello(conn, params) do
-    # viewの表示の処理(後ほど実装)
+    # paramsはマップってなぜわかる？ルーターの定義で指定可能なアクション関数のインターフェースがそうなってる？
+    name = params["name"]
+    # ここでいきなりPhoenix.Controllerのrenderが使えるのはなぜ？→上位のDemoWebモジュールでuse宣言してる
+    render(conn, "hello.html", %{who: name})
   end
 end
 """
